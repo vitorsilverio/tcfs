@@ -1,0 +1,15 @@
+[tool.poetry]
+name = "tcfs"
+version = "0.1.0"
+description = "Torrent client from scratch"
+authors = ["Vítor <vitor.silverio.rodrigues@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+requests = "^2.31.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
