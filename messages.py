@@ -81,6 +81,22 @@ class BitFieldMessage(GenericMessage):
         super().__init__(message_type=b"\x05", raw_payload=payload)
 
 
+    @property
+    def packages(self):
+        packages = []
+        for i in range(len(self._raw_payload)):
+            for j in range(8):
+                if (self._raw_payload[i] >> (7-j)) & 1:
+                    packages.append(8*i+j)
+        return packages
+
+
+    def __repr__(self):
+        return f"""
+            {super().__repr__()}\tpackages: {self.packages}
+        """
+
+
 class RequestMessage(GenericMessage):
 
     def __init__(self, *, payload: bytes | None = None, index: int | None = None, begin: int | None = None,
